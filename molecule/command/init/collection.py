@@ -76,6 +76,7 @@ class Collection(base.Base):
             collection_directory,
             collection_name,
         )
+
         templates = [
             'scenario/driver/{driver_name}'.format(**self._command_args),
             'scenario/verifier/{verifier_name}'.format(**self._command_args),
@@ -126,8 +127,8 @@ class Collection(base.Base):
     help='Directory path for the new collection.')
 @click.option(
     '--provisioner-name',
-    type=click.Choice(['ansible']),
-    default='ansible',
+    type=click.Choice(['ansible_collection']),
+    default='ansible_collection',
     help='Name of provisioner to initialize. (ansible)')
 @click.option(
     '--template',
@@ -140,8 +141,8 @@ class Collection(base.Base):
 )
 @click.option(
     '--verifier-name',
-    type=click.Choice(config.molecule_verifiers()),
-    default='testinfra',
+    type=click.Choice(['ansible']),
+    default='ansible',
     help='Name of verifier to initialize. (testinfra)')
 def collection(
         ctx,  # pylint: disable=unused-argument

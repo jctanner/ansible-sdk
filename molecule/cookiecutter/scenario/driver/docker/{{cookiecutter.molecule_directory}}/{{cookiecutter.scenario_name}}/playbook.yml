@@ -1,5 +1,10 @@
 ---
+{% if cookiecutter.collection_name == "OVERRIDEN" %}# roles
 - name: Converge
   hosts: all
   roles:
     - role: {{ cookiecutter.role_name }}
+{% else %}# collections
+- name: Converge
+  hosts: all
+  tasks:{% endif %}

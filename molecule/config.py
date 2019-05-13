@@ -47,6 +47,7 @@ from molecule.driver import vagrant
 from molecule.lint import yamllint
 from molecule.model import schema_v2
 from molecule.provisioner import ansible
+from molecule.provisioner import ansible_collection
 from molecule.verifier import ansible as ansible_verifier
 from molecule.verifier import goss
 from molecule.verifier import inspec
@@ -229,6 +230,8 @@ class Config(object):
         provisioner_name = self.config['provisioner']['name']
         if provisioner_name == 'ansible':
             return ansible.Ansible(self)
+        elif provisioner_name == 'ansible_collection':
+            return ansible_collection.AnsibleCollection(self)
 
     @property
     @util.memoize
