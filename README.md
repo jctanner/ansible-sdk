@@ -11,6 +11,7 @@ A prototype developers kit for Ansible Collections.
 virtualenv --python=$(which python3) sdk.venv
 source sdk.venv/bin/activate
 pip install git+https://github.com/ansible/ansible
+pip install git+https://github.com/jctanner/ansible-test
 pip install git+https://github.com/jctanner/ansible-sdk
 ```
 
