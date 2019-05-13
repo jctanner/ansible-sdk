@@ -84,8 +84,7 @@ class Collection(base.Base):
 
         scenario_base_directory = os.path.join(
             collection_directory,
-            collection_path,
-            # collection_name,
+            collection_name,
         )
         templates = [
             'scenario/driver/{driver_name}'.format(**self._command_args),
