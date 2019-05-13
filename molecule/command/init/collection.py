@@ -58,17 +58,7 @@ class Collection(base.Base):
         collection_directory = self._command_args['collection_directory']
         if collection_directory is None:
             collection_directory = os.getcwd()
-        (  # Hack with specifying a role_name var allows us to reuse the
-           # existing template structures previously created for roles.
-           # FIXME: Improve this by renaming everything to more generic
-           # FIXME: variable type.
-            self._command_args['role_name']
-        ) = collection_path = (
-            '{space}.{name}'.
-            format(
-                space=collection_namespace, name=collection_name,
-            )
-        )
+        collection_path = os.path.join(os.getcwd(), collection_name)
         msg = 'Initializing new collection {}...'.format(collection_path)
         LOG.info(msg)
 
@@ -94,7 +84,7 @@ class Collection(base.Base):
             self._process_templates(template, self._command_args,
                                     scenario_base_directory)
         self._process_templates(
-            'molecule', self._command_args, collection_directory,
+            'molecule.collection', self._command_args, collection_directory,
         )
 
         msg = 'Initialized colletion in {} successfully.'.format(
