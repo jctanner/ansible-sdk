@@ -5,6 +5,9 @@
   roles:
     - role: {{ cookiecutter.role_name }}
 {% else %}# collections
+# please fill in calls to your plugins or roles
+# which should be run against the test instance
+# before verification begins
 - name: Converge
   hosts: all
   tasks:{% endif %}
