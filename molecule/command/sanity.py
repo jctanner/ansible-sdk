@@ -18,6 +18,9 @@
 #  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 #  DEALINGS IN THE SOFTWARE.
 
+import os
+import sys
+
 import click
 
 from molecule import logger
@@ -70,7 +73,23 @@ class Sanity(base.Base):
         :return: None
         """
         self.print_info()
-        res = ansible_test.sanity()
+        res = None
+        res = ansible_test.sanity('--color=no', '-v', '--junit', _ok_code=[0, 1])
+
+        fd = 'tests/results/log'
+        if not os.path.exists(fd):
+            os.makedirs(fd)
+        fn = os.path.join(fd, 'sanity.log')
+        with open(fn, 'wb') as f:
+            f.write(res.stdout)
+            f.write(res.stderr)
+
+        #sys.stdout.write(res.stdout)
+
+        if res.exit_code != 0:
+            print(res.stderr.decode('utf-8'))
+            #raise Exception("Sanity tests failed!")
+            sys.exit(1)
 
 
 
