@@ -66,7 +66,6 @@ class Scenarios(object):
         if self._scenario_name:
             scenarios = self._filter_for_scenario()
             self._verify()
-
             return scenarios
 
         scenarios = [c.scenario for c in self._configs]
@@ -146,6 +145,7 @@ class Scenarios(object):
                 'lint': scenario.lint_sequence,
                 'prepare': scenario.prepare_sequence,
                 'side_effect': scenario.side_effect_sequence,
+                'sanity': scenario.sanity_sequence,
                 'syntax': scenario.syntax_sequence,
                 'test': scenario.test_sequence,
                 'verify': scenario.verify_sequence,

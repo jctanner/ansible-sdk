@@ -36,6 +36,7 @@ from molecule.command import login  # noqa
 from molecule.command import matrix  # noqa
 from molecule.command import prepare  # noqa
 from molecule.command import side_effect  # noqa
+from molecule.command import sanity # noqa
 from molecule.command import syntax  # noqa
 from molecule.command import test  # noqa
 from molecule.command import verify  # noqa

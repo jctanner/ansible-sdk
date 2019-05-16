@@ -186,6 +186,12 @@ class Scenario(object):
         return ['side_effect']
 
     @property
+    def sanity_sequence(self):
+        return ['sanity']
+        #import epdb; epdb.st()
+        #return self.config.config['scenario']['sanity_sequence']
+
+    @property
     def syntax_sequence(self):
         return ['syntax']
 
